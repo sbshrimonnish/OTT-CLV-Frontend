@@ -3,6 +3,10 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
+      "source": "/api/(.*)",
+      "destination": "/OTT-CLV-ML/server.py"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
