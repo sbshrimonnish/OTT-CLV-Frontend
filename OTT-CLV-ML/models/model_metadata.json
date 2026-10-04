@@ -1,0 +1,120 @@
+{
+  "project_name": "OTT CLV Prediction Machine Learning",
+  "primary_model": "Random Forest Regressor",
+  "pipeline_file": "clv_random_forest_pipeline.joblib",
+  "random_state": 42,
+  "dataset_rows": 12000,
+  "dataset_cols": 25,
+  "target_variable": "CLV",
+  "python_version": "3.14.6",
+  "features_used": [
+    "Age_Group",
+    "Location",
+    "Platform",
+    "Plan",
+    "Monthly_Fee",
+    "Billing_Cycle",
+    "Movies_Watched",
+    "Watch_Hours",
+    "Login_Days",
+    "Last_Active_Days",
+    "Renewals",
+    "Upgrades",
+    "Downgrades",
+    "Payment_Failures",
+    "Discount",
+    "Support_Tickets",
+    "Churn",
+    "Lifetime_Months"
+  ],
+  "excluded_features": {
+    "Customer_ID": "Unique row identifier; contains no predictive signal and causes data leakage/overfitting.",
+    "CLV": "Target variable; using it as an input feature is direct target leakage.",
+    "Future_6M_CLV": "Future target variable; using future values to predict current CLV is temporal data leakage.",
+    "Future_12M_CLV": "Future target variable; using future values to predict current CLV is temporal data leakage.",
+    "Signup_Date": "Raw date string; feature engineer Lifetime_Months captures full subscription duration.",
+    "Last_Active_Date": "Raw date string; feature engineer Last_Active_Days captures recency without date string leak.",
+    "Prediction_Date": "Constant reference metadata date (2025-01-02) across all rows."
+  },
+  "validation_metrics": [
+    {
+      "MAE": 3432.9162505058357,
+      "RMSE": 4768.803135443011,
+      "R2": 0.8764260679687395,
+      "Model": "Linear Regression"
+    },
+    {
+      "MAE": 3432.7207822914297,
+      "RMSE": 4768.869730550036,
+      "R2": 0.8764226165884009,
+      "Model": "Ridge Regression"
+    },
+    {
+      "MAE": 274.7561167832162,
+      "RMSE": 582.2107935134487,
+      "R2": 0.998158089252119,
+      "Model": "Decision Tree"
+    },
+    {
+      "MAE": 111.53973562779137,
+      "RMSE": 325.7968515860408,
+      "R2": 0.999423231088645,
+      "Model": "Random Forest"
+    },
+    {
+      "MAE": 147.7962571873369,
+      "RMSE": 223.36318994593478,
+      "R2": 0.9997288988974932,
+      "Model": "Gradient Boosting"
+    }
+  ],
+  "cross_validation_metrics": [
+    {
+      "CV_MAE_Mean": 3439.8996820166926,
+      "CV_MAE_Std": 55.67520470011574,
+      "CV_RMSE_Mean": 4819.69849579448,
+      "CV_RMSE_Std": 75.26063858519295,
+      "CV_R2_Mean": 0.8691727089931007,
+      "CV_R2_Std": 0.004649299763700429,
+      "Model": "Linear Regression"
+    },
+    {
+      "CV_MAE_Mean": 3439.5745571623593,
+      "CV_MAE_Std": 55.72768485325868,
+      "CV_RMSE_Mean": 4819.6873296767935,
+      "CV_RMSE_Std": 75.32209948443746,
+      "CV_R2_Mean": 0.8691735537128263,
+      "CV_R2_Std": 0.00464394627033758,
+      "Model": "Ridge Regression"
+    },
+    {
+      "CV_MAE_Mean": 272.20901026983466,
+      "CV_MAE_Std": 6.746045291938339,
+      "CV_RMSE_Mean": 529.7715007441224,
+      "CV_RMSE_Std": 28.943936700909454,
+      "CV_R2_Mean": 0.9984196767972662,
+      "CV_R2_Std": 0.00012703257374655974,
+      "Model": "Decision Tree"
+    },
+    {
+      "CV_MAE_Mean": 108.57377412029004,
+      "CV_MAE_Std": 5.613819573352386,
+      "CV_RMSE_Mean": 305.25542877114333,
+      "CV_RMSE_Std": 39.334781356948334,
+      "CV_R2_Mean": 0.999464352089176,
+      "CV_R2_Std": 0.00014784435690301894,
+      "Model": "Random Forest"
+    },
+    {
+      "CV_MAE_Mean": 146.33452440252046,
+      "CV_MAE_Std": 4.3503639259891544,
+      "CV_RMSE_Mean": 222.66177897148796,
+      "CV_RMSE_Std": 6.527036375243632,
+      "CV_R2_Mean": 0.99972071798302,
+      "CV_R2_Std": 1.5148543074928006e-05,
+      "Model": "Gradient Boosting"
+    }
+  ],
+  "official_test_set_evaluated": false,
+  "official_test_set_status": "Official 3,000-row test evaluation has NOT been performed yet because the official testing dataset has not been provided."
+}
